@@ -20,6 +20,10 @@ def extract_references(text):
 def root():
     return {"status": "API running"}
 
+@app.head("/")
+def root_head():
+    return {}
+
 @app.post("/analyze")
 async def analyze(file: UploadFile = File(...)):
     contents = await file.read()
